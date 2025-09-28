@@ -21,12 +21,8 @@ const Index = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground via-success to-info bg-clip-text text-transparent leading-tight">
-            How Subscription Status is Verified Without Exposing Your Data
+            How XION Uses zkTLS to Verify Data Without Exposing Your Privacy
           </h1>
-
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            See zkTLS Technology in Action - Privacy-Preserving Verification
-          </p>
 
           {/* Decorative elements */}
           <div className="absolute top-1/4 left-10 w-20 h-20 bg-success/20 rounded-full blur-xl animate-pulse" />
@@ -41,10 +37,6 @@ const Index = () => {
             <strong className="text-foreground">XION is revolutionizing brand engagement through privacy-first technology.</strong>{" "}
             Using zkTLS (Zero-Knowledge Transport Layer Security), over 150 global brands including Uber, Amazon, BMW, and Marvel Rivals now verify customer data without exposing personal information. With 6.6+ million interactions across 20+ brands and 800,000+ active users, XION has reduced customer acquisition costs by 79% while enabling users to get rewarded for their engagement. Unlike traditional advertising where personal data gets monetized by intermediaries, XION's mathematical proofs ensure users maintain data ownership while brands can still verify actions. As Uber's Head of New Growth stated:{" "}
             <em className="text-success">"I can easily see us 10xing our spend with EarnOS as it's the most effective funnel we have access to."</em>
-          </p>
-
-          <p className="text-xl font-semibold text-foreground">
-            Below, see exactly how this privacy-preserving verification works:
           </p>
         </div>
       </section>
@@ -131,7 +123,7 @@ const Index = () => {
             </div>
 
             <div className="p-6 bg-card border border-border rounded-lg">
-              <h4 className="text-xl font-bold mb-4 text-success">🚀 Mass Adoption Ready:</h4>
+              <h4 className="text-xl font-bold mb-4 text-success">Built for Everyone:</h4>
               <p className="mb-4">XION's seamless technology foundation makes this accessible to everyone:</p>
               <ul className="grid md:grid-cols-2 gap-3 text-left">
                 <li><strong>No wallets needed</strong> - Sign in with email or biometrics like any app</li>
@@ -142,7 +134,7 @@ const Index = () => {
             </div>
 
             <div className="p-6 bg-card border border-border rounded-lg">
-              <h4 className="text-xl font-bold mb-4 text-info">🎯 Real-World Impact:</h4>
+              <h4 className="text-xl font-bold mb-4 text-info">Real-World Impact:</h4>
               <p className="mb-4">
                 From gym memberships to job applications, airline loyalty points to social media verification - XION's technology works invisibly in the background. Users get privacy and rewards, businesses get accurate verification, and developers get simple tools to build with.
               </p>
@@ -159,7 +151,7 @@ const Index = () => {
       <footer className="border-t border-border py-8">
         <div className="container mx-auto px-6 text-center">
           <p className="text-muted-foreground">
-            Powered by zkTLS technology - Where privacy meets verification at mass scale
+            This website was created by Aman for educational purposes
           </p>
         </div>
       </footer>
