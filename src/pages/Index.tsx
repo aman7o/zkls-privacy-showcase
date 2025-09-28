@@ -8,23 +8,30 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Header */}
-      <header className="container mx-auto px-6 py-16 text-center">
-        {/* Logo */}
-        <div className="flex justify-center mb-8">
-          <img
-            src={xionLogo}
-            alt="Xion"
-            className="h-16 w-auto"
-          />
+      <header className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-success/5 via-background to-info/5" />
+        <div className="relative container mx-auto px-6 py-16 text-center">
+          {/* Logo */}
+          <div className="flex justify-center mb-8">
+            <img
+              src={xionLogo}
+              alt="Xion"
+              className="h-16 w-auto animate-float"
+            />
+          </div>
+
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground via-success to-info bg-clip-text text-transparent leading-tight">
+            How Subscription Status is Verified Without Exposing Your Data
+          </h1>
+
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            See zkTLS Technology in Action - Privacy-Preserving Verification
+          </p>
+
+          {/* Decorative elements */}
+          <div className="absolute top-1/4 left-10 w-20 h-20 bg-success/20 rounded-full blur-xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-info/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: "1s" }} />
         </div>
-
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground leading-tight">
-          How Subscription Status is Verified Without Exposing Your Data
-        </h1>
-
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-          See zkTLS Technology in Action - Privacy-Preserving Verification
-        </p>
       </header>
 
       {/* XION Introduction Section */}
