@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DemoCard } from "./DemoCard";
 import { LoginForm } from "./LoginForm";
 import { DataItem } from "./DataItem";
@@ -20,6 +20,7 @@ const userData = [
 export const TraditionalDemo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showConnection, setShowConnection] = useState(false);
+  const [showDataFlow, setShowDataFlow] = useState(false);
   const [showUserData, setShowUserData] = useState(false);
   const [dataItems, setDataItems] = useState<boolean[]>(new Array(userData.length).fill(false));
 
@@ -28,7 +29,13 @@ export const TraditionalDemo = () => {
     resetDemo();
     setIsPlaying(true);
 
+    // Step 1: Show connection
     setTimeout(() => setShowConnection(true), 500);
+
+    // Step 2: Show data flow
+    setTimeout(() => setShowDataFlow(true), 1500);
+
+    // Step 3: Show user data one by one
     setTimeout(() => {
       setShowUserData(true);
       userData.forEach((_, index) => {
@@ -38,15 +45,17 @@ export const TraditionalDemo = () => {
             newItems[index] = true;
             return newItems;
           });
-        }, index * 100);
+        }, index * 200);
       });
-    }, 1500);
+    }, 2500);
 
-    setTimeout(() => setIsPlaying(false), 4000);
+    // Reset playing state
+    setTimeout(() => setIsPlaying(false), 5000);
   };
 
   const resetDemo = () => {
     setShowConnection(false);
+    setShowDataFlow(false);
     setShowUserData(false);
     setDataItems(new Array(userData.length).fill(false));
   };
@@ -55,6 +64,7 @@ export const TraditionalDemo = () => {
     <DemoCard
       title="Traditional Way"
       subtitle="The Problem"
+      variant="traditional"
       className="h-full"
     >
       <div className="space-y-6">
@@ -62,24 +72,29 @@ export const TraditionalDemo = () => {
           onLogin={startDemo}
           onReplay={resetDemo}
           isPlaying={isPlaying}
+          variant="traditional"
         />
 
+        {/* Connection Animation */}
         {showConnection && (
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3 animate-fade-in">
             <div className="flex items-center justify-center gap-4">
-              <Wifi className="w-6 h-6 text-red-500" />
-              <div className="flex-1 h-1 bg-gray-200 rounded-full" />
-              <Server className="w-6 h-6 text-red-500" />
+              <Wifi className="w-6 h-6 text-danger animate-pulse" />
+              <div className="flex-1 h-1 bg-danger/30 rounded-full overflow-hidden">
+                <div className="h-full bg-danger animate-data-flow rounded-full" />
+              </div>
+              <Server className="w-6 h-6 text-danger animate-pulse" />
             </div>
-            <p className="text-sm text-red-600 font-medium">
+            <p className="text-sm text-danger font-medium">
               Connecting to Subscription Platform...
             </p>
           </div>
         )}
 
+        {/* Data Display */}
         {showUserData && (
           <div className="space-y-3">
-            <h4 className="text-lg font-semibold text-red-600 mb-4">
+            <h4 className="text-lg font-semibold text-danger mb-4">
               📡 Full Response Received:
             </h4>
             <div className="grid gap-3">
@@ -89,14 +104,15 @@ export const TraditionalDemo = () => {
                   icon={item.icon}
                   label={item.label}
                   value={item.value}
+                  variant="exposed"
                   isVisible={dataItems[index]}
-                  delay={index * 50}
+                  delay={index * 100}
                 />
               ))}
             </div>
-            <div className="mt-6 p-4 bg-red-50 border border-red-500 rounded-lg">
-              <p className="text-sm text-red-700 font-medium text-center">
-                ❌ To prove subscription, ALL personal data gets revealed.
+            <div className="mt-6 p-4 bg-danger/20 border border-danger rounded-lg">
+              <p className="text-sm text-danger font-medium text-center">
+                ❌ To prove subscription, ALL personal data gets revealed
               </p>
             </div>
           </div>
