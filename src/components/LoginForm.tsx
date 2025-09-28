@@ -9,9 +9,10 @@ interface LoginFormProps {
   onLogin: () => void;
   onReplay: () => void;
   isPlaying: boolean;
+  variant: "traditional" | "zktls";
 }
 
-export const LoginForm = ({ onLogin, onReplay, isPlaying }: LoginFormProps) => {
+export const LoginForm = ({ onLogin, onReplay, isPlaying, variant }: LoginFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
@@ -24,28 +25,28 @@ export const LoginForm = ({ onLogin, onReplay, isPlaying }: LoginFormProps) => {
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="email" className="text-sm font-medium">
+        <Label htmlFor={`email-${variant}`} className="text-sm font-medium">
           Username
         </Label>
         <Input
-          id="email"
+          id={`email-${variant}`}
           type="email"
           value="john.doe@gmail.com"
           readOnly
-          className="bg-gray-100 border-gray-300"
+          className="bg-input border-border text-foreground"
         />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="password" className="text-sm font-medium">
+        <Label htmlFor={`password-${variant}`} className="text-sm font-medium">
           Password
         </Label>
         <Input
-          id="password"
+          id={`password-${variant}`}
           type="password"
           value="••••••••••"
           readOnly
-          className="bg-gray-100 border-gray-300"
+          className="bg-input border-border text-foreground"
         />
       </div>
 
@@ -53,7 +54,12 @@ export const LoginForm = ({ onLogin, onReplay, isPlaying }: LoginFormProps) => {
         <Button
           onClick={handleLogin}
           disabled={isPlaying}
-          className="flex-1 bg-black text-white hover:bg-gray-800"
+          className={cn(
+            "flex-1 transition-all duration-300",
+            variant === "traditional"
+              ? "bg-danger hover:bg-danger/90 text-danger-foreground"
+              : "bg-success hover:bg-success/90 text-success-foreground"
+          )}
         >
           {isLoading ? (
             <div className="flex items-center gap-2">
@@ -72,7 +78,7 @@ export const LoginForm = ({ onLogin, onReplay, isPlaying }: LoginFormProps) => {
           onClick={onReplay}
           variant="outline"
           size="icon"
-          className="border-gray-300 hover:bg-gray-100"
+          className="border-border hover:bg-secondary"
         >
           <RotateCcw className="w-4 h-4" />
         </Button>
